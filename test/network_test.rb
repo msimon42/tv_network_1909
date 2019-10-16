@@ -10,7 +10,7 @@ class NetworkTest < Minitest::Test
     @leslie_knope = Character.new({name: "Leslie Knope", actor: "Amy Poehler", salary: 2000000})
     @ron_swanson = Character.new({name: "Ron Swanson", actor: "Nick Offerman", salary: 1400000})
     @knight_rider = Show.new({name: 'Knight Rider', creator: 'Glen Larson', characters: [@kitt, @michael_knight]})
-    @parks_and_rec = Show.new("Parks and Recreation", "Michael Shur & Greg Daniels", [@leslie_knope, @ron_swanson])
+    @parks_and_rec = Show.new({name: "Parks and Recreation", creator: "Michael Shur & Greg Daniels", characters: [@leslie_knope, @ron_swanson]})
   end
 
   def test_exist
@@ -32,6 +32,16 @@ class NetworkTest < Minitest::Test
   end
 
   def test_highest_paid
+    @nbc.add_show(@knight_rider)
+    @nbc.add_show(@parks_and_rec)
+
     assert_equal "Amy Poehler", @nbc.highest_paid_actor
-  end     
+  end
+
+  def test_payroll
+    @nbc.add_show(@knight_rider)
+    @nbc.add_show(@parks_and_rec)
+
+    assert_equal {"David Hasselhoff" => 1600000, "William Daniels" => 1000000, "Amy Poehler" => 2000000, "Nick Offerman" => 1400000}, @nbc.payroll
+  end   
 end
