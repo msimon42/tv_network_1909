@@ -1,5 +1,6 @@
 require 'minitest'
 require 'minitest/autorun'
+require 'pry'
 require_relative '../lib/show'
 
 class ShowTest < MiniTest::Test
@@ -27,5 +28,5 @@ class ShowTest < MiniTest::Test
 
   def test_total_salary
     assert_equal 2600000, @knight_rider.total_salary
-  end   
+  end
 end
