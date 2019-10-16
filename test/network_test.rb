@@ -41,7 +41,7 @@ class NetworkTest < Minitest::Test
   def test_payroll
     @nbc.add_show(@knight_rider)
     @nbc.add_show(@parks_and_rec)
-
-    assert_equal {"David Hasselhoff" => 1600000, "William Daniels" => 1000000, "Amy Poehler" => 2000000, "Nick Offerman" => 1400000}, @nbc.payroll
-  end   
+    payroll = {"David Hasselhoff" => 1600000, "William Daniels" => 1000000, "Amy Poehler" => 2000000, "Nick Offerman" => 1400000}
+    assert_equal payroll , @nbc.payroll
+  end
 end
